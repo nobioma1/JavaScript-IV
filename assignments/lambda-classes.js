@@ -51,6 +51,15 @@ class Instructor extends Person {
   grade(student, subject) {
     return `${student.name} receives a perfect score on ${subject}`;
   }
+
+  addAndRemove(student) {
+    let difference = 100 - student._grade;
+    let randomValue = Math.floor(Math.random() * difference);
+    if ((randomValue % 2) === 0) {
+      return student._grade - randomValue;
+    }
+    return student._grade + randomValue;
+  }
 }
 
 const mark = new Instructor({
@@ -206,3 +215,12 @@ console.log(lydia.demo('Python'));
 console.log(lydia.grade({ name: 'Fres' }, 'Python'));
 console.log(lydia.standUp('#CS2'));
 console.log(lydia.debugsCode({ name: 'Fres' }, 'Python'));
+
+// STRETCH
+// Invocking the addAndRemove method in the Instructor class
+// passing the instanciation of student as a parameter
+console.log(mark.addAndRemove(precious))
+console.log(mark.addAndRemove(precious))
+
+console.log(mary.addAndRemove(manny))
+console.log(mary.addAndRemove(manny))
