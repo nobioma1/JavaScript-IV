@@ -131,3 +131,60 @@ console.log(precious.sprintChallenge('LESS'));
 console.log(manny.speak());
 manny.listsSubjects();
 console.log(manny.sprintChallenge('Java'));
+
+/**
+ * @class ProjectManager
+ * @extends {Person}
+ */
+class ProjectManager extends Instructor {
+  constructor(attributes) {
+    super(attributes);
+    this._gradClassName = attributes.gradClassName;
+    this._favInstructor = attributes.favInstructor;
+  }
+
+  standUp(slackChannel) {
+    return `${this._name} announces to ${slackChannel}, @channel standy times!`;
+  }
+
+  debugsCode(student, subject) {
+    return `${this._name} debugs ${student.name}'s code on ${subject}`;
+  }
+}
+
+const emmanuel = new ProjectManager({
+  name: 'Emmanuel',
+  location: 'Nigeria',
+  age: 23,
+  gender: 'male',
+  favLanguage: 'JavaScript',
+  specialty: 'Front-end',
+  catchPhrase: `Good sleep is magic`,
+  gradClassName: 'WebEU2',
+  favInstructor: 'John'
+});
+
+const lydia = new ProjectManager({
+  name: 'Lydia',
+  location: 'England',
+  age: 20,
+  gender: 'Female',
+  favLanguage: 'Python',
+  specialty: 'Back-end',
+  catchPhrase: `Constant Practice`,
+  gradClassName: 'CS2',
+  favInstructor: 'Melinda'
+});
+
+console.log(emmanuel.speak());
+console.log(emmanuel.demo('Python'));
+console.log(emmanuel.grade({name: 'Loveday'}, 'JavaScript'));
+console.log(emmanuel.standUp('#WebEU2'))
+console.log(emmanuel.debugsCode({name: 'Loveday'}, 'JavaScript'))
+
+console.log(lydia.speak());
+console.log(lydia.demo('Python'));
+console.log(lydia.grade({name: 'Fres'}, 'Python'));
+console.log(lydia.standUp('#CS2'));
+console.log(lydia.debugsCode({name: 'Fres'}, 'Python'))
+
