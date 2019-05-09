@@ -29,3 +29,46 @@ const johnny = new Person({
 console.log(jane.speak());
 console.log(johnny.speak());
 
+class Instructor extends Person {
+  constructor(attributes) {
+    super(attributes);
+    this._speciality = attributes.speciality;
+    this._favLanguage = attributes.favLanguage;
+    this._catchPhrase = attributes.catchPhrase;
+  }
+
+  demo(subject) {
+    return `Today we are learning about ${subject}`;
+  }
+
+  grade(student, subject) {
+    return `${student.name} receives a perfect score on ${subject}`;
+  }
+}
+
+const mark = new Instructor({
+  name: 'Mark',
+  location: 'Germany',
+  age: 30,
+  gender: 'male',
+  favLanguage: 'JavaScript',
+  specialty: 'Front-end',
+  catchPhrase: `Don't forget the homies`
+});
+
+const mary = new Instructor({
+  name: 'Mary',
+  location: 'France',
+  age: 22,
+  gender: 'Female',
+  favLanguage: 'HTML',
+  specialty: 'Front-end',
+  catchPhrase: `Hardwork Pays`
+});
+
+console.log(mark.speak());
+console.log(mark.demo('Python'));
+console.log(mark.grade({name: 'Jane'}, 'Python'));
+console.log(mary.speak());
+console.log(mary.demo('Python'));
+console.log(mary.grade({name: 'John'}, 'HTML'));
