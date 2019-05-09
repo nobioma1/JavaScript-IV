@@ -75,10 +75,10 @@ const mary = new Instructor({
 
 console.log(mark.speak());
 console.log(mark.demo('Python'));
-console.log(mark.grade({name: 'Jane'}, 'Python'));
+console.log(mark.grade({ name: 'Jane' }, 'Python'));
 console.log(mary.speak());
 console.log(mary.demo('Python'));
-console.log(mary.grade({name: 'John'}, 'HTML'));
+console.log(mary.grade({ name: 'John' }, 'HTML'));
 
 /**
  * @class Student
@@ -90,6 +90,8 @@ class Student extends Person {
     this._previousBackground = attributes.previousBackground;
     this._className = attributes.className;
     this._favSubjects = attributes.favSubjects;
+    // STRETCH
+    this._grade = attributes.grade;
   }
 
   listsSubjects() {
@@ -97,11 +99,19 @@ class Student extends Person {
   }
 
   PRAssignment(subject) {
-    return `${this._name} has submitted a PR for ${subject}`
+    return `${this._name} has submitted a PR for ${subject}`;
   }
 
   sprintChallenge(subject) {
-    return `${this._name} has begun sprint challenge on ${subject}`
+    return `${this._name} has begun sprint challenge on ${subject}`;
+  }
+
+  // STRETCH
+  graduate() {
+    if (this._grade > 70) {
+      return `Score: ${this._grade}% Congratulations!!, you are ready to graduate`;
+    }
+    return `Score: ${this._grade}% Not cleared to graduate at the moment, More Grading to be done.`;    
   }
 }
 
@@ -112,7 +122,9 @@ const precious = new Student({
   gender: 'Female',
   previousBackground: 'Fine Art',
   className: 'WebEU5',
-  favSubjects: ['Art', 'CSS', 'LESS', 'Web Design']
+  favSubjects: ['Art', 'CSS', 'LESS', 'Web Design'],
+  // STRETCH
+  grade: 95
 });
 
 const manny = new Student({
@@ -122,15 +134,22 @@ const manny = new Student({
   gender: 'Male',
   previousBackground: 'Computer Science',
   className: 'WebUS1',
-  favSubjects: ['French', 'Java']
+  favSubjects: ['French', 'Java'],
+  // STRETCH
+  grade: 69
 });
 
 console.log(precious.speak());
 precious.listsSubjects();
 console.log(precious.sprintChallenge('LESS'));
+// STRETCH
+console.log(precious.graduate());
+
 console.log(manny.speak());
 manny.listsSubjects();
 console.log(manny.sprintChallenge('Java'));
+// STRETCH
+console.log(manny.graduate());
 
 /**
  * @class ProjectManager
@@ -178,13 +197,12 @@ const lydia = new ProjectManager({
 
 console.log(emmanuel.speak());
 console.log(emmanuel.demo('Python'));
-console.log(emmanuel.grade({name: 'Loveday'}, 'JavaScript'));
-console.log(emmanuel.standUp('#WebEU2'))
-console.log(emmanuel.debugsCode({name: 'Loveday'}, 'JavaScript'))
+console.log(emmanuel.grade({ name: 'Loveday' }, 'JavaScript'));
+console.log(emmanuel.standUp('#WebEU2'));
+console.log(emmanuel.debugsCode({ name: 'Loveday' }, 'JavaScript'));
 
 console.log(lydia.speak());
 console.log(lydia.demo('Python'));
-console.log(lydia.grade({name: 'Fres'}, 'Python'));
+console.log(lydia.grade({ name: 'Fres' }, 'Python'));
 console.log(lydia.standUp('#CS2'));
-console.log(lydia.debugsCode({name: 'Fres'}, 'Python'))
-
+console.log(lydia.debugsCode({ name: 'Fres' }, 'Python'));
